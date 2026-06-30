@@ -1,21 +1,17 @@
 const generateBtn = document.getElementById('generate-btn');
 const ingredientsInput = document.getElementById('ingredients-input');
-const apiKeyInput = document.getElementById('api-key-input');
 const loader = document.getElementById('loader');
 const recipeCard = document.getElementById('recipe-card');
 const recipeTitle = document.getElementById('recipe-title');
 const recipeContent = document.getElementById('recipe-content');
 
+const GEMINI_API_KEY = "AIzaSyBZK3TixBHKSgxu3xbr9AY9Tr4zYKIogNc";
+
 generateBtn.addEventListener('click', async () => {
     const ingredients = ingredientsInput.value.trim();
-    const apiKey = apiKeyInput.value.trim();
 
     if (!ingredients) {
         alert('Please enter some ingredients.');
-        return;
-    }
-    if (!apiKey) {
-        alert('Please enter your Gemini API key.');
         return;
     }
 
@@ -23,7 +19,7 @@ generateBtn.addEventListener('click', async () => {
     recipeCard.style.display = 'none';
 
     try {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
         
         const response = await fetch(url, {
             method: 'POST',
@@ -54,6 +50,7 @@ generateBtn.addEventListener('click', async () => {
         console.error(error);
         alert('An error occurred while fetching the recipe.');
     } finally {
+        loader.style.none = 'none';
         loader.style.display = 'none';
     }
 });

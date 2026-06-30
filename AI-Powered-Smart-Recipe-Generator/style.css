@@ -39,7 +39,7 @@ header p {
 .input-section {
     display: flex;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 #ingredients-input {
@@ -69,19 +69,6 @@ header p {
 
 #generate-btn:hover {
     background-color: #27ae60;
-}
-
-.api-section {
-    margin-bottom: 30px;
-}
-
-#api-key-input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #eee;
-    border-radius: 4px;
-    font-size: 12px;
-    outline: none;
 }
 
 .loader {
